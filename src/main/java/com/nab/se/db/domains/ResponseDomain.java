@@ -3,9 +3,10 @@ package com.nab.se.db.domains;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Map;
+
 @Getter
 @Setter
-public class AccountRequest {
-    private Integer limit;
-    private String productType;
+public class ResponseDomain {
+    public Map<String, Object> response;
 }

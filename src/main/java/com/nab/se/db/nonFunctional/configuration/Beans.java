@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.Duration;
@@ -15,9 +16,9 @@ import java.time.Duration;
 public class Beans {
 
     @Bean
-    public NamedParameterJdbcTemplate restTemplate(JdbcTemplate jdbcTemplate) {
-        jdbcTemplate.setQueryTimeout(1);
-        NamedParameterJdbcTemplate namedTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
-        return namedTemplate;
+    public SimpleJdbcCall getSimpleJdbcCall(JdbcTemplate jdbcTemplate) {
+        SimpleJdbcCall simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate);
+        simpleJdbcCall.getJdbcTemplate().setQueryTimeout(10);
+        return simpleJdbcCall;
     }
 }
