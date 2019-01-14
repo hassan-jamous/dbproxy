@@ -7,6 +7,6 @@ import java.util.Map;
 
 @Getter
 @Setter
-public class ResponseDomain {
+public class StoredProcedureExecuteResponse {
     public Map<String, Object> response;
 }

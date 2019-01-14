@@ -6,12 +6,12 @@ import java.util.List;
 
 @Getter
 @Setter
-public class RequestDomain {
+public class StoredProcedureExecuteRequest {
     private String schemaName;
     private String packageName;
     private String procedureName;
-    private List<SpParameter> InParameters;
-    private List<SpParameter> OutParameters;
+    private List<StoredProcedureParameter> InParameters;
+    private List<StoredProcedureParameter> OutParameters;
 }
 
 
