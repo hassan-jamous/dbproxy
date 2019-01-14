@@ -1,4 +1,4 @@
-package com.nab.se.db.nonFunctional.configuration;
+package com.bigasus.dbproxy.nonFunctional.configuration;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;

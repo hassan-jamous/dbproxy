@@ -1,7 +1,7 @@
-package com.nab.se.db.components;
+package com.bigasus.dbproxy.components;
 
-import com.nab.se.db.domains.StoredProcedureExecuteRequest;
-import com.nab.se.db.domains.StoredProcedureParameter;
+import com.bigasus.dbproxy.domains.StoredProcedureExecuteRequest;
+import com.bigasus.dbproxy.domains.StoredProcedureParameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.SqlOutParameter;
 import org.springframework.jdbc.core.SqlParameter;
@@ -22,13 +22,7 @@ public class DBCaller {
 
     public Map<String, Object> executeStoredProcedure(StoredProcedureExecuteRequest storedProcedureExecuteRequest) {
 
-        List<SqlParameter> sqlParameters = new ArrayList<>();
-        for (StoredProcedureParameter storedProcedureParameter : storedProcedureExecuteRequest.getInParameters()) {
-            sqlParameters.add(new SqlParameter(storedProcedureParameter.getParameterName(), storedProcedureParameter.getParameterType()));
-        }
-        for (StoredProcedureParameter storedProcedureParameter : storedProcedureExecuteRequest.getOutParameters()) {
-            sqlParameters.add(new SqlOutParameter(storedProcedureParameter.getParameterName(), storedProcedureParameter.getParameterType()));
-        }
+        List<SqlParameter> sqlParameters = buildSqlParameters(storedProcedureExecuteRequest);
 
         this.simpleJdbcCall
                 .withSchemaName(storedProcedureExecuteRequest.getSchemaName())
@@ -60,6 +54,15 @@ public class DBCaller {
 
     }
 
-
+    private List<SqlParameter> buildSqlParameters(StoredProcedureExecuteRequest storedProcedureExecuteRequest) {
+        List<SqlParameter> sqlParameters = new ArrayList<>();
+        for (StoredProcedureParameter storedProcedureParameter : storedProcedureExecuteRequest.getInParameters()) {
+            sqlParameters.add(new SqlParameter(storedProcedureParameter.getParameterName(), storedProcedureParameter.getParameterType()));
+        }
+        for (StoredProcedureParameter storedProcedureParameter : storedProcedureExecuteRequest.getOutParameters()) {
+            sqlParameters.add(new SqlOutParameter(storedProcedureParameter.getParameterName(), storedProcedureParameter.getParameterType()));
+        }
+        return sqlParameters;
+    }
 
 }

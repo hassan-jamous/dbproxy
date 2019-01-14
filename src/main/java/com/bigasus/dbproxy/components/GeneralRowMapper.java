@@ -1,4 +1,4 @@
-package com.nab.se.db.components;
+package com.bigasus.dbproxy.components;
 
 
 import org.springframework.jdbc.core.RowMapper;

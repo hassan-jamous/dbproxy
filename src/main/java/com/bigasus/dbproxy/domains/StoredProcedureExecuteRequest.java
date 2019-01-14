@@ -1,4 +1,4 @@
-package com.nab.se.db.domains;
+package com.bigasus.dbproxy.domains;
 
 import lombok.Getter;
 import lombok.Setter;

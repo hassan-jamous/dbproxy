@@ -1,8 +1,9 @@
-package com.nab.se.db.controllers;
+package com.bigasus.dbproxy.controllers;
 
+import com.bigasus.dbproxy.components.DBCaller;
+import com.bigasus.dbproxy.domains.StoredProcedureExecuteRequest;
+import com.bigasus.dbproxy.domains.StoredProcedureExecuteResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nab.se.db.components.DBCaller;
-import com.nab.se.db.domains.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

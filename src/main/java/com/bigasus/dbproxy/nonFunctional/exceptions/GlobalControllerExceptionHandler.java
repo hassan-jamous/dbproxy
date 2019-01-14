@@ -1,4 +1,4 @@
-package com.nab.se.db.nonFunctional.exceptions;
+package com.bigasus.dbproxy.nonFunctional.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

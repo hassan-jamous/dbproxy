@@ -1,4 +1,4 @@
-package com.nab.se.db.nonFunctional.exceptions;
+package com.bigasus.dbproxy.nonFunctional.exceptions;
 
 import lombok.Getter;
 import lombok.Setter;
