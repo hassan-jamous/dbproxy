@@ -21,8 +21,8 @@ public class DBCaller {
     private SimpleJdbcCall simpleJdbcCall;
 
     public Map<String, Object> executeStoredProcedure(StoredProcedureExecuteRequest storedProcedureExecuteRequest) {
-
         List<SqlParameter> sqlParameters = buildSqlParameters(storedProcedureExecuteRequest);
+        MapSqlParameterSource param = mapSqlParameters(storedProcedureExecuteRequest);
 
         this.simpleJdbcCall
                 .withSchemaName(storedProcedureExecuteRequest.getSchemaName())
@@ -30,14 +30,16 @@ public class DBCaller {
                 .withProcedureName(storedProcedureExecuteRequest.getProcedureName())
                 .declareParameters(sqlParameters.toArray(new SqlParameter[sqlParameters.size()]));
 
+        Map<String, Object> spResponse = simpleJdbcCall.execute(param);
+        return spResponse;
+    }
+
+    private MapSqlParameterSource mapSqlParameters(StoredProcedureExecuteRequest storedProcedureExecuteRequest) {
         MapSqlParameterSource param = new MapSqlParameterSource();
         for (StoredProcedureParameter storedProcedureParameter : storedProcedureExecuteRequest.getInParameters()) {
             param.addValue(storedProcedureParameter.getParameterName(), storedProcedureParameter.getParameterValue());
         }
-
-        Map<String, Object> spResponse = simpleJdbcCall.execute(param);
-        return spResponse;
-
+        return param;
     }
 
 
