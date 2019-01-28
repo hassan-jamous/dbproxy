@@ -38,7 +38,6 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-jdbc"
     compile "org.projectlombok:lombok:1.16.10"
     compile files('lib/ojdbc7-12.1.0.1.jar')
-    compile "org.apache.tomcat:tomcat-jdbc"
 
     testCompile "org.springframework.boot:spring-boot-starter-test"
 }
